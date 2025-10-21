@@ -4,6 +4,7 @@ import { Router } from "express";
 import { registerClient } from "@/controllers/register-client.js";
 import { listerClient } from "@/controllers/lister-client.js";
 import { registerProduct } from "@/controllers/register-product.js";
+import { listerProduct } from "@/controllers/lister-products.js";
 
 
 
@@ -15,6 +16,7 @@ router.get('/clientes', listerClient)
 
 // ------------------- PRODUCT ROUTES -------------------
 router.post('/produtos', registerProduct)
+router.get('/produtos', listerProduct)
 
 // ------------------- ORDER ROUTES -------------------
 

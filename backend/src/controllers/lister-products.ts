@@ -1,13 +1,13 @@
-import { makeListClient } from '@/service/factories/make-list-client.js'
+import { makeListProduct } from '@/service/factories/make-list-products.js'
 import type {Request, Response} from 'express'
 
-export async function listerClient(request: Request, reply: Response) {
-    let clients: unknown
+export async function listerProduct(request: Request, reply: Response) {
+    let products: unknown
 
     try{
-        const listerClientService = makeListClient()
+        const listerProductService = makeListProduct()
 
-        clients = await listerClientService.execute()
+        products = await listerProductService.execute()
 
     } catch (err){
         if(err instanceof Error){
@@ -23,6 +23,6 @@ export async function listerClient(request: Request, reply: Response) {
     return reply
         .status(200)
         .send({
-            data: clients,
+            data: products,
         })
 }

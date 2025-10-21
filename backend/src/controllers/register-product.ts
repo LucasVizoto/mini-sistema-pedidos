@@ -10,7 +10,6 @@ export async function registerProduct(request: Request, reply: Response) {
 
     const {name, price} = registerBodySchema.parse(request.body)
 
-    // declare client in outer scope so it's available after the try/catch
     let product: unknown
 
     try{

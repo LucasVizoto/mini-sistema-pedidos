@@ -10,7 +10,6 @@ export async function registerClient(request: Request, reply: Response) {
 
     const {name, email} = registerBodySchema.parse(request.body)
 
-    // declare client in outer scope so it's available after the try/catch
     let client: unknown
 
     try{
