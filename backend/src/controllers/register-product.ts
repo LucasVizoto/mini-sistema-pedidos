@@ -1,30 +1,30 @@
-import { makeCreateClient } from '@/service/factories/make-create-client.js'
+import { makeCreateProduct } from '@/service/factories/make-create-product.js'
 import type {Request, Response} from 'express'
 import {z} from "zod"
 
-export async function registerClient(request: Request, reply: Response) {
+export async function registerProduct(request: Request, reply: Response) {
     const registerBodySchema = z.object({
         name: z.string(),
-        email: z.string().email(),
+        price: z.number(),
     })
 
-    const {name, email} = registerBodySchema.parse(request.body)
+    const {name, price} = registerBodySchema.parse(request.body)
 
     // declare client in outer scope so it's available after the try/catch
-    let client: unknown
+    let product: unknown
 
     try{
-        const createClientService = makeCreateClient()
+        const createProductService = makeCreateProduct()
 
-        client = await createClientService.execute({
+        product = await createProductService.execute({
             name, 
-            email,
+            price,
         })
 
     } catch (err){
         if(err instanceof Error){
             return reply
-            .status(409)
+            .status(500)
             .send({
                 message: err.message
             })
@@ -35,7 +35,7 @@ export async function registerClient(request: Request, reply: Response) {
     return reply
         .status(201)
         .send({
-            message: 'Client has been created successfully!',
-            data: client
+            message: 'Product has been created successfully!',
+            data: product
         })
 }
