@@ -1,5 +1,4 @@
-import type { Prisma, Client, Product } from "generated/prisma/index.js";
-import type { ClientRepository } from "../client-repository.js";
+import type { Prisma } from "generated/prisma/index.js";
 import { prisma } from "@/lib/prisma.js";
 import type { ProductRepository } from "../product-repository.js";
 
