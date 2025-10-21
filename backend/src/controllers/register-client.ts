@@ -36,6 +36,6 @@ export async function registerClient(request: Request, reply: Response) {
         .status(201)
         .send({
             message: 'Client has been created succesfuly!',
-            client,
+            data: client
         })
 }
