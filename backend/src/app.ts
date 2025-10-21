@@ -6,8 +6,10 @@ const port = env.PORT
 
 
 export const app = express()
+app.use(express.json());
 
 // Aqui estou registrando minhas Blueprints das rotas criadas
+
 app.use(router)
 
 app.listen(port, () => {
