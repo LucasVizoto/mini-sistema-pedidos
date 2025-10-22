@@ -11,7 +11,22 @@ export class ListOrdersService {
 
   async execute(): Promise<ListOrdersServiceResponse> {
     
-    const orders = await this.orderRepository.list_orders();
+    const ordersFromRepo = await this.orderRepository.list_orders();
+
+    const orders = ordersFromRepo.map(order => {
+
+      // 3. Calcula o 'amount' para este pedido específico
+      const amount = order.products.reduce((total, product) => {
+        return total + (product.price * product.quantity);
+      }, 0)
+
+      //Retorna um *novo* objeto com todas as propriedades do pedido
+      //    original (...order) mais o novo campo 'amount'
+    return {
+        ...order,
+        amount: amount,
+      };
+    });
 
     return {
       orders,

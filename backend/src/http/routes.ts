@@ -6,6 +6,7 @@ import { listerClient } from "@/controllers/lister-client.js";
 import { registerProduct } from "@/controllers/register-product.js";
 import { listerProduct } from "@/controllers/lister-products.js";
 import { registerOrder } from "@/controllers/register-order.js";
+import { listerOrder } from "@/controllers/lister-order.js";
 
 
 
@@ -21,5 +22,6 @@ router.get('/produtos', listerProduct)
 
 // ------------------- ORDER ROUTES -------------------
 router.post('/pedidos', registerOrder)
+router.get('/pedidos', listerOrder)
 
 export default router
