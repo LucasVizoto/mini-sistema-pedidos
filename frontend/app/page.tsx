@@ -50,15 +50,13 @@ export default function LoginPage() {
             </h1>
           </div>
           
-          {/* Formulário */}
+
           <form onSubmit={handleLogin}>
             
-            {/* Campo Username */}
             <div className="mb-5 relative">
               <label htmlFor="username" className="text-sm font-medium text-gray-600 mb-1 block">
                 Username
               </label>
-              {/* Ícone dentro do input */}
               <i className='bx bxs-user absolute left-3 top-1/2 mt-2 text-gray-400'></i>
               <input 
                 type="text"
@@ -70,7 +68,6 @@ export default function LoginPage() {
               />
             </div>
 
-            {/* Campo Password */}
             <div className="mb-5 relative">
               <label htmlFor="password" className="text-sm font-medium text-gray-600 mb-1 block">
                 Password

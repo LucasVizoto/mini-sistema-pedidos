@@ -20,33 +20,37 @@ export default function DashboardLayout({
           <ul className="flex flex-col space-y-2">
             <li>
               <Link
-                href="/dashboard"
-                className="block py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
+                href="/dashboard/clientes"
+                className="flex items-center gap-x-3 py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
               >
+                <i className='bx bx-user' style={{ fontSize: '20px' }}></i>
                 Clientes
               </Link>
             </li>
             <li>
               <Link
                 href="/dashboard/produtos"
-                className="block py-2.5 px-4 rounded-md  text-gray-100 hover:bg-gray-200 hover:text-gray-900"
+                className="flex items-center gap-x-3 py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
               >
+                <i className='bx bx-box' style={{ fontSize: '20px' }}></i>
                 Produtos
               </Link>
             </li>
             <li>
               <Link
                 href="/dashboard/pedidos"
-                className="block py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
+                className="flex items-center gap-x-3 py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
               >
+                <i className='bx bx-cart' style={{ fontSize: '20px' }}></i>
                 Pedidos
               </Link>
             </li>
             <li>
               <Link
                 href="/"
-                className="block py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
+                className="flex items-center gap-x-3 py-2.5 px-4 rounded-md text-gray-100 hover:bg-gray-200 hover:text-gray-900"
               >
+                <i className='bx bx-home' style={{ fontSize: '20px' }}></i>
                 Voltar para Home
               </Link>
             </li>

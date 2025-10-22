@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Lucas Vizoto",
   description: "Mini gerenciado de pedidos, produtos e clientes desenvolvido em NextJS",
+  
 };
 
 export default function RootLayout({
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'></link>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></link>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`} 
