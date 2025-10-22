@@ -7,7 +7,7 @@ export type OrderItem = {
 };
 
 export interface CreateOrderRepositoryInput {
-  client_id: string
+  clientId: string
   status: string // "PENDENTE" | "PAGO"
   date?: Date
   products: {

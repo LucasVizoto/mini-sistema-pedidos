@@ -29,7 +29,7 @@ export class CreateOrderService {
     
     // 2. O service prepara os dados para o formato que o REPOSITÓRIO espera
     const order = await this.orderRepository.create({
-      client_id: clientId,
+      clientId: clientId,
       status: "PENDENTE", 
       
       // 4. O Service formata a lista de produtos

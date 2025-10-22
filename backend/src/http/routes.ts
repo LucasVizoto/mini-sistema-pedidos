@@ -5,6 +5,7 @@ import { registerClient } from "@/controllers/register-client.js";
 import { listerClient } from "@/controllers/lister-client.js";
 import { registerProduct } from "@/controllers/register-product.js";
 import { listerProduct } from "@/controllers/lister-products.js";
+import { registerOrder } from "@/controllers/register-order.js";
 
 
 
@@ -19,5 +20,6 @@ router.post('/produtos', registerProduct)
 router.get('/produtos', listerProduct)
 
 // ------------------- ORDER ROUTES -------------------
+router.post('/pedidos', registerOrder)
 
 export default router

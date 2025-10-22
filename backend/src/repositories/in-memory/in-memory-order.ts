@@ -21,7 +21,7 @@ export class InMemoryOrderRepository implements OrderRepository {
       id: orderId,
       status: data.status,
       date: data.date ? new Date(data.date) : new Date(),
-      client_id: data.client_id,
+      client_id: data.clientId,
     };
 
     this.items.push(order);

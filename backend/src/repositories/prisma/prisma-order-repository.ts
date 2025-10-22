@@ -12,7 +12,7 @@ export class PrismaOrderRepository implements OrderRepository {
         
 
         client: {
-          connect: { id: data.client_id }
+          connect: { id: data.clientId }
         },
         
         products: {
