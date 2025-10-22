@@ -1,65 +1,117 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+export default function LoginPage() {
+  const router = useRouter();
+  
+  // Criar estados para os campos de input
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault(); 
+        router.push('/dashboard'); 
+  };
+
+
+  // Lógica de validação: botão só é habilitado se ambos os campos estiverem preenchidos
+  const isButtonDisabled = !username || !password;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      
+      {/* Card de Login */}
+      <div className="flex flex-col md:flex-row w-full max-w-4xl shadow-2xl rounded-lg overflow-hidden bg-white">
+        
+        {/* Lado Esquerdo: Imagem  */}
+        <div className="hidden md:block md:w-1/2">
+          <Image 
+            src="/esporte_image_login_page.png"
+            alt="Ilustração na página de login"
+            width={600}
+            height={600}
+            className="object-cover w-full h-full"
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Lado Direito: Formulário */}
+        <div className="w-full md:w-1/2 p-8 md:p-12">
+          
+          {/* Cabeçalho do Formulário */}
+          <div className="flex flex-col items-center mb-8">
+            {/* Ícone (Estou usando Boxicons que você instalou) */}
+            <i className='bx bxs-user-circle text-7xl text-green-600'></i>
+            <h1 className="text-3xl font-semibold text-gray-800 mt-2">
+              Login
+            </h1>
+          </div>
+          
+          {/* Formulário */}
+          <form onSubmit={handleLogin}>
+            
+            {/* Campo Username */}
+            <div className="mb-5 relative">
+              <label htmlFor="username" className="text-sm font-medium text-gray-600 mb-1 block">
+                Username
+              </label>
+              {/* Ícone dentro do input */}
+              <i className='bx bxs-user absolute left-3 top-1/2 mt-2 text-gray-400'></i>
+              <input 
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Digite seu usuário"
+                className="w-full pl-10 pr-4 py-3 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+
+            {/* Campo Password */}
+            <div className="mb-5 relative">
+              <label htmlFor="password" className="text-sm font-medium text-gray-600 mb-1 block">
+                Password
+              </label>
+              {/* Ícone dentro do input */}
+              <i className='bx bxs-lock-alt absolute left-3 top-1/2 mt-2 text-gray-400'></i>
+              <input 
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Digite sua senha"
+                className="w-full pl-10 pr-4 py-3 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+
+            {/* Opções (Remember/Forgot) */}
+            <div className="flex justify-between items-center text-sm mb-8">
+              <label className="flex items-center text-gray-600 cursor-pointer">
+                <input type="checkbox" className="mr-2" />
+                Remember me
+              </label>
+              <Link href="#" className="text-black hover:underline">
+                Forgot Password
+              </Link>
+            </div>
+            
+            {/* Botão de Login */}
+            <button 
+              type="submit"
+              disabled={isButtonDisabled} // 5. O botão é desabilitado baseado na lógica
+              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold tracking-wide
+                         hover:bg-green-700 transition-colors
+                         disabled:bg-gray-400 disabled:cursor-not-allowed" // Estilo do botão desabilitado
+            >
+              Login
+            </button>
+
+          </form>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
