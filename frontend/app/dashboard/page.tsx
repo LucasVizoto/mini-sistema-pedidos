@@ -1,9 +1,8 @@
-// /app/page.tsx
-import Link from 'next/link';
+import React from 'react';
 
-export default function HomePage() {
+export default function ClientesPage() {
   return (
-    <main style={{ padding: '50px', textAlign: 'center' }}>
-    </main>
+    <div>
+    </div>
   );
 }

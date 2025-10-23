@@ -1,29 +1,41 @@
-// /services/api.ts
-
 import axios from "axios";
 
 
 export interface Client {
-  id: number
+  id: string
   name: string
   email: string
 }
 
 export interface Product {
-  id: number
+  id: string
   name: string
   price: number
 }
 
-export interface Order {
+export interface OrderRequest {
   clientId: string
   products: Array<Product>
+}
+
+export interface OrderProduct extends Product {
+  quantity: number
+}
+
+export interface OrderResponse{
+  id: string
+  status: string
+  date: string
+  client_id: string
+  client: Client
+  products: OrderProduct[]
+  amount: number
 }
 
 // Tipos para os dados de criação (sem o 'id')
 type CreateClientData = Omit<Client, 'id'>
 type CreateProductData = Omit<Product, 'id'>
-type CreateOrderData = Omit<Order, 'id'>
+type CreateOrderData = Omit<OrderRequest, 'id'>
 
 
 
@@ -45,12 +57,13 @@ export const listProduct = async () => {
   return response.data.data;
 };
 // ------------------- ORDER ROUTES -------------------
-export const postOrder = (data: CreateOrderData) => api.post<Order>('/pedidos', data)
+export const postOrder = (data: CreateOrderData) => api.post<OrderRequest>('/pedidos', data)
 export const listOrder = async () => {
   const response = await api.get('/pedidos');
   return response.data.data;
 };
-
-export const changeStatus = () => api.post('/pedidos/status')
+export const payOrder = (orderId: string) => {
+  return api.patch(`/pedidos/${orderId}`, { newStatus: 'PAGO' })
+};
 
 export default api

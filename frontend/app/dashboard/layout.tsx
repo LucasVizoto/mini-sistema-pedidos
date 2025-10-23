@@ -9,7 +9,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex min-h-screen">
-      
+
 
       <aside className="w-60 bg-gray-900 p-5 border-r border-gray-200">
         <div>
@@ -58,9 +58,8 @@ export default function DashboardLayout({
         </nav>
       </aside>
 
-      <main className="flex-1 p-8 bg-slate-100">
-
-        {children}
+      <main className="flex-1 p-8 bg-gray-100"> 
+        {children} 
       </main>
     </div>
   );

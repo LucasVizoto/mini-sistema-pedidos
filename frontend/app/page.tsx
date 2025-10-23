@@ -40,10 +40,8 @@ export default function LoginPage() {
 
         {/* Lado Direito: Formulário */}
         <div className="w-full md:w-1/2 p-8 md:p-12">
-          
-          {/* Cabeçalho do Formulário */}
+        
           <div className="flex flex-col items-center mb-8">
-            {/* Ícone (Estou usando Boxicons que você instalou) */}
             <i className='bx bxs-user-circle text-7xl text-green-600'></i>
             <h1 className="text-3xl font-semibold text-gray-800 mt-2">
               Login
@@ -98,10 +96,10 @@ export default function LoginPage() {
             {/* Botão de Login */}
             <button 
               type="submit"
-              disabled={isButtonDisabled} // 5. O botão é desabilitado baseado na lógica
+              disabled={isButtonDisabled} // O botão é desabilitado baseado na lógica
               className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold tracking-wide
                          hover:bg-green-700 transition-colors
-                         disabled:bg-gray-400 disabled:cursor-not-allowed" // Estilo do botão desabilitado
+                         disabled:bg-gray-400 disabled:cursor-not-allowed" 
             >
               Login
             </button>
