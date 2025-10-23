@@ -13,6 +13,24 @@ export class InMemoryOrderRepository implements OrderRepository {
     private productRepository: ProductRepository,
     private clientRepository: ClientRepository
   ) {}
+  async update_status(orderId: string, newStatus: Order['status']): Promise<Order> {
+    const orderIndex = this.items.findIndex(item => item.id === orderId);
+
+    if (orderIndex === -1) {
+      // Se não encontrou, lança um erro
+      throw new Error("Pedido não encontrado.");
+    }
+
+    const order = this.items[orderIndex];
+
+    if (!order) {
+      throw new Error("Pedido não encontrado.");
+    }
+
+    order.status = newStatus;
+
+    return order;
+  }
 
   async create(data: CreateOrderRepositoryInput): Promise<Order> {
     const orderId = randomUUID();

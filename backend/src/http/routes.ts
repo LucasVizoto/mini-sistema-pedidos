@@ -7,6 +7,7 @@ import { registerProduct } from "@/controllers/register-product.js";
 import { listerProduct } from "@/controllers/lister-products.js";
 import { registerOrder } from "@/controllers/register-order.js";
 import { listerOrder } from "@/controllers/lister-order.js";
+import { updaterStatusOrder } from "@/controllers/updater-status-order.js";
 
 
 
@@ -23,5 +24,6 @@ router.get('/produtos', listerProduct)
 // ------------------- ORDER ROUTES -------------------
 router.post('/pedidos', registerOrder)
 router.get('/pedidos', listerOrder)
+router.patch('/pedidos/:orderId', updaterStatusOrder)
 
 export default router

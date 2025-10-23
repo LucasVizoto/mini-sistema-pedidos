@@ -26,5 +26,6 @@ export type OrderWithDetails = Order & {
 export interface OrderRepository{
     create(data: CreateOrderRepositoryInput): Promise<Order>
     list_orders():Promise<OrderWithDetails[]>
+    update_status(orderId: string, newStatus: Order['status']):Promise<Order>
 
 }

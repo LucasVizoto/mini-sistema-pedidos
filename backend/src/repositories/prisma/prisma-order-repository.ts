@@ -4,13 +4,13 @@ import type { Order, Prisma } from "generated/prisma/index.js";
 import type { OrderRepository, CreateOrderRepositoryInput} from "../order-repository.js";
 
 export class PrismaOrderRepository implements OrderRepository {
-
+  
   async create(data: CreateOrderRepositoryInput): Promise<Order> {
     const order = await prisma.order.create({
       data: {
         status: data.status,
         
-
+        
         client: {
           connect: { id: data.clientId }
         },
@@ -29,6 +29,18 @@ export class PrismaOrderRepository implements OrderRepository {
     return order;
   }
 
+  async update_status(orderId: string, newStatus: Order["status"]): Promise<Order> {
+    const order = await prisma.order.update({
+      where:{
+        id: orderId,
+      },
+      data: {
+        status: newStatus,
+      }
+    })
+
+    return order
+  }
 
   async list_orders() {
     
