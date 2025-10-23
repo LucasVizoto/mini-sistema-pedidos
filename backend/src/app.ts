@@ -1,14 +1,14 @@
 import express from 'express'
+import cors from 'cors';
 import router from '@/http/routes.js'
 import { env } from './env/index.js';
 import { errorHandler } from './http/middlewares/error-handler.js';
 
 const port = env.PORT 
 
-
 export const app = express()
 app.use(express.json());
-
+app.use(cors())
 // Aqui estou registrando minhas Blueprints das rotas criadas
 
 app.use(router)
