@@ -13,9 +13,12 @@ export interface Product {
   price: number
 }
 
-export interface OrderRequest {
-  clientId: string
-  products: Array<Product>
+export interface CreateOrderPayload {
+  clientId: string;
+  products: Array<{
+    productId: string;
+    quantity: number;
+  }>;
 }
 
 export interface OrderProduct extends Product {
@@ -35,7 +38,7 @@ export interface OrderResponse{
 // Tipos para os dados de criação (sem o 'id')
 type CreateClientData = Omit<Client, 'id'>
 type CreateProductData = Omit<Product, 'id'>
-type CreateOrderData = Omit<OrderRequest, 'id'>
+type CreateOrderData = Omit<CreateOrderPayload, 'id'>
 
 
 
@@ -57,7 +60,7 @@ export const listProduct = async () => {
   return response.data.data;
 };
 // ------------------- ORDER ROUTES -------------------
-export const postOrder = (data: CreateOrderData) => api.post<OrderRequest>('/pedidos', data)
+export const postOrder = (data: CreateOrderData) => api.post<CreateOrderPayload>('/pedidos', data)
 export const listOrder = async () => {
   const response = await api.get('/pedidos');
   return response.data.data;

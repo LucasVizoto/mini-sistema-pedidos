@@ -1,6 +1,6 @@
 // /components/OrderCard.tsx
 import React from 'react';
-import type { OrderRequest } from '@/api/api'; // Importe a interface
+import type { OrderResponse } from '@/api/api'; // Importe a interface
 import { User, Calendar, Tag, Package } from 'lucide-react';
 import { PaymentButton } from './payment-button';
 
@@ -30,7 +30,7 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-export function OrderCard({ order }: { order: OrderRequest }) {
+export function OrderCard({ order }: { order: OrderResponse }) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
       

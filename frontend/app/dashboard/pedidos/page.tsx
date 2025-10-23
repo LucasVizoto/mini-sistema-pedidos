@@ -2,7 +2,8 @@
 import { listOrder, OrderResponse } from '@/api/api';
 import { OrderCard } from '@/components/order-cart';
 
-import { ClipboardList } from 'lucide-react';
+import { ClipboardList, Plus } from 'lucide-react';
+import Link from 'next/link';
 
 export default async function PedidosPage() {
   
@@ -21,10 +22,16 @@ export default async function PedidosPage() {
           <ClipboardList size={30} />
           Pedidos
         </h1>
-        {/* Você pode adicionar um botão "Novo Pedido" aqui se quiser */}
+        <Link 
+          href="/dashboard/pedidos/novo-pedido" 
+          className="flex items-center gap-2 bg-slate-700 text-white py-2 px-4 rounded-lg font-medium hover:bg-slate-500 transition-colors"
+        >
+          <Plus size={20} />
+          Novo Pedido
+        </Link>
       </header>
 
-      {/* 2. Lista de Pedidos */}
+      {/*Lista de Pedidos */}
       {ordersList.length === 0 ? (
         <div className="bg-white rounded-lg shadow-md p-6 text-gray-500">
           Nenhum pedido encontrado.

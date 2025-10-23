@@ -15,13 +15,12 @@ export function PaymentButton({ orderId, status }: PaymentButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  // Define se o pedido já está pago
   const isPaid = status === 'PAGO';
 
   const handlePayment = async () => {
     setIsLoading(true);
     try {
-      // 1. Chama a API para pagar
+
       await payOrder(orderId);
       
       // 2. Atualiza a lista de pedidos em segundo plano
